@@ -1,0 +1,12 @@
+main : main_testMO.o multimedia-object.o test.o
+	gcc main_testMO.o multimedia-object.o test.o -o main
+
+main_testMO.o : main_testMO.c multimedia-object.h test.h
+	gcc -c main_testMO.c
+
+multimedia-object.o : multimedia-object.c multimedia-object.h test.h
+	gcc -c multimedia-object.c
+
+test.o : test.c test.h multimedia-object.h
+	gcc -c test.c
+
