@@ -1,0 +1,14 @@
+main : main_testlist.o multimedia-object.o test.o
+	gcc main_testlist.o multimedia-object.o test.o listMO.o -o main
+
+main_testlist.o : main_testlist.c multimedia-object.h test.h listMo.h
+	gcc -c main_testlist.c
+
+multimedia-object.o : multimedia-object.c multimedia-object.h test.h listMo.h
+	gcc -c multimedia-object.c
+
+test.o : test.c test.h multimedia-object.h listMo.h
+	gcc -c test.c
+
+listMO.o : listMO.c listMo.h test.h multimedia-object.h
+	gcc -c listMO.c

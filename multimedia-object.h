@@ -22,8 +22,8 @@ typedef struct {
 
 void fillMO (MultimediaObject * o, char * name, char * path, int day, int month, int year, TypeMultimediaObject type);
 
-
+void changeNameMO(MultimediaObject * o, char * newName);
 void test_MO();
-
+void displayConsoleOM(MultimediaObject * o);
 
 #endif /* MULTIMEDIAOBJECTS_H*/

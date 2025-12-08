@@ -3,4 +3,4 @@ project(player-multimedia C)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror=vla")
 
-add_executable(testMO main_testMO.c multimedia-object.c test.c)
+add_executable(testMO main_testlist.c multimedia-object.c test.c listMO.c)
