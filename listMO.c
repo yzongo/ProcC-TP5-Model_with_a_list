@@ -132,17 +132,68 @@ void setOnLast(List * l)
  
 void setOnNext (List * l)
 {
-    l->current=l->current->next;
+    if (l!=NULL)
+        l->current=l->current->next;
 }
 
 void printList(List * l)
 {
+    setOnFirst(l);
     while(l->current->next!=NULL)
     {
         displayConsoleOM(&l->current->value);
     }
 }
-int nbElement(List * l);
+int nbElement(List * l) {
+    setOnFirst(l);
+    int i=0;
+    while(l->current->next!=NULL)
+    {
+        setOnNext(l);
+        i++;
+    }
+    return i;
+};
+
+int find(List * l, char* name) {
+    setOnFirst(l);
+    while(l->current->next!=NULL)
+    {
+        if (strcmp(name, l->current->value.name)==0)
+            return 1;
+        setOnNext(l);
+    }
+    return 0;
+}
+
+int deleteValue(List *l, char * name) {
+    setOnFirst(l);
+    NodeList * temp = l->first;
+    while(l->current->next!=NULL)
+    {
+        if (strcmp(name, l->current->value.name)==0) {
+            temp->next=l->current->next;
+            NodeList * del = l->current;
+            setOnNext(l);
+            free(del);
+            return 1;
+        }
+        temp = l->current;
+        setOnNext(l);
+        return -1;
+    }
+}
+
+void freeList(List * l) {
+    setOnFirst(l);
+    NodeList * temp;
+    while(l->current->next!=NULL)
+    {
+        temp=l->current;
+        setOnNext(l);
+        free(temp);
+    }
+}
 #include "test.h"
 /*!
 * \brief  Unit testing of the functions provided in the list.c file
